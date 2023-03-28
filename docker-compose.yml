@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  server-node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - PORT = ${PORT}
+    container_name: ecommerce-server
+    restart: always
+    ports:
+      - '${PORT}:3000'
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
