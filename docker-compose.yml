@@ -1,17 +1,34 @@
 version: '3.9'
 
 services:
-  server-node:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        - PORT = ${PORT}
-    container_name: ecommerce-server
+  server:
+    container_name: pelusa-server
     restart: always
+    build: .
     ports:
-      - '${PORT}:3000'
-    env_file:
-      - .env
+      - '3000:3000'
     volumes:
       - .:/usr/src/app
+    links:
+      - 'mongo'
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
