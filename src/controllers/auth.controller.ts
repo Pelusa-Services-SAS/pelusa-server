@@ -2,7 +2,7 @@
 import type { Request, Response } from 'express';
 
 // Services
-import AuthServices from '@services/auth.services';
+import AuthServices from '@services/auth/auth.services';
 
 class AuthController {
 	private readonly authService: AuthServices;

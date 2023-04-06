@@ -4,4 +4,5 @@
 
 # Files
 jest.config.js
+jest.setup.ts
 .babelrc
