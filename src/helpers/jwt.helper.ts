@@ -6,16 +6,11 @@ import jwt from 'jsonwebtoken';
  * @param { string } id - id user
  */
 const generateJWT = async (id: string): Promise<string> => {
-	try {
-		const secretKey = process.env.SECRET_PRIVATE_KEY ?? 'test';
-		const payload = { id };
-		const token = jwt.sign(payload, secretKey, { expiresIn: '24h' });
+	const secretKey = process.env.SECRET_PRIVATE_KEY ?? 'test';
+	const payload = { id };
+	const token = jwt.sign(payload, secretKey, { expiresIn: '24h' });
 
-		return token;
-	} catch (error) {
-		console.log(error);
-		return `Could not generate token 💀`;
-	}
+	return token;
 };
 
 export default generateJWT;
