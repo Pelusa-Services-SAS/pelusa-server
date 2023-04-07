@@ -3,14 +3,13 @@ import express, { type Application } from 'express';
 import cors from 'cors';
 
 // Routes
-import AuthRoute from '@routes/auth.route';
+import AuthRoute from '@routes/auth/auth.route';
 import dbConnection from '@config/dbConnection';
 
 class Server {
 	// Server
 	public app: Application;
 	private readonly port: string;
-
 	// Routes
 	private readonly authRoute = new AuthRoute();
 

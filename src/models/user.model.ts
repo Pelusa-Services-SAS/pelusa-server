@@ -14,7 +14,7 @@ const UserSchema = new Schema<IUser>(
 		email: { type: String, required: true, unique: true },
 		password: { type: String, required: true },
 		status: { type: Boolean, default: true },
-		role: { type: String, enum: Roles, deafult: Roles.USER },
+		role: { type: String, enum: Roles, default: Roles.USER },
 	},
 	{ timestamps: true }
 );
@@ -34,16 +34,12 @@ UserSchema.methods.toJSON = function (): IUser {
  * @param next - action to continue the process
  */
 UserSchema.pre('save', async function (next) {
-	try {
-		const user = this;
-		const salt = bcryptjs.genSaltSync(10);
-		user.password = bcryptjs.hashSync(user.password, salt);
-		next();
-	} catch (error) {
-		throw new Error(`Password encryption error ${error} 💀`);
-	}
+	const user = this;
+	const salt = bcryptjs.genSaltSync(10);
+	user.password = bcryptjs.hashSync(user.password, salt);
+	next();
 });
 
-const UserModel = model<IUser>('User', UserSchema);
+const UserModel = model<IUser>('Users', UserSchema);
 
 export default UserModel;

@@ -1,16 +1,19 @@
-import { connect } from 'mongoose';
+import mongoose, { type Mongoose } from 'mongoose';
 
 /**
  * Database connection
  */
-const dbConnection = async (): Promise<void> => {
-	const mongoUri: string = process.env.MONGO_URI ?? '';
-	try {
-		await connect(mongoUri);
-		console.log('Database Online ✅');
-	} catch (error) {
-		console.log(`Database connection error ${error} 💀`);
-	}
+
+const dbConnection = async (): Promise<Mongoose> => {
+	const mongoUri = process.env.MONGO_URI ?? '';
+	return await mongoose.connect(mongoUri);
+};
+
+/**
+ * Database test disconnection
+ */
+export const dbDisconnect = async () => {
+	await mongoose.disconnect();
 };
 
 export default dbConnection;

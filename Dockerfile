@@ -12,9 +12,7 @@ COPY . .
 
 RUN yarn build
 
-COPY . /dist
-
 EXPOSE ${PORT}
 
-CMD ["yarn", "run", "dev"]
+CMD ["yarn", "start"]
 
