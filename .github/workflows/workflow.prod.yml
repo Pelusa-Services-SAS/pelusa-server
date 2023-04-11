@@ -1,10 +1,10 @@
-name: Deployment Development
+name: Deployment Production
 
 on:
   push:
-    branches: [develop]
+    branches: [main]
   pull_request:
-    branches: [develop]
+    branches: [main]
     types: [opened, synchronize]
 
 jobs:
