@@ -47,7 +47,6 @@ describe('AuthRoute Test', () => {
 
 		test('should return a status 400 and an array errors with username and email exists', () => {
 			expect(responseBadExistUser.status).toBe(400);
-			console.log(responseBadExistUser.body);
 			expect(responseBadExistUser.body.errors).toBeInstanceOf(Array);
 		});
 	});
