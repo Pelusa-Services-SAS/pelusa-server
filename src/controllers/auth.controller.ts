@@ -12,12 +12,8 @@ class AuthController {
 	}
 
 	public registerController = async (req: Request, res: Response) => {
-		try {
-			const { status, data } = await this.authService.registerService(req.body);
-			return res.status(status).send(data);
-		} catch (error) {
-			return res.status(500).send(error);
-		}
+		const { status, data } = await this.authService.registerService(req.body);
+		return res.status(status).send(data);
 	};
 
 	public loginController = async (req: Request, res: Response) => {
