@@ -7,8 +7,8 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "tsc",
-		"start": "tsnd -r tsconfig-paths/register  --respawn --transpile-only --deps --poll dist/index.js",
-		"dev": "tsnd -r tsconfig-paths/register  --respawn --transpile-only --deps --poll src/index.ts",
+		"start": "tsnd -r tsconfig-paths/register  dist/index.js",
+		"dev": "tsnd -r tsconfig-paths/register  --respawn --transpile-only src/index.ts",
 		"lint": "eslint .",
 		"test": "jest",
 		"test:watch": "jest --watch",

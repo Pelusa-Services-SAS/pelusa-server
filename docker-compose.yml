@@ -10,9 +10,9 @@ services:
     volumes:
       - .:/usr/src/app
     links:
-      - 'db'
+      - 'mongo'
 
-  db:
+  mongo:
     container_name: mongoDB
     image: mongo
     restart: always

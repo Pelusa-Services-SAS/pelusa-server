@@ -1,12 +1,16 @@
-import mongoose, { type Mongoose } from 'mongoose';
-
+import mongoose from 'mongoose';
 /**
  * Database connection
  */
 
-const dbConnection = async (): Promise<Mongoose> => {
-	const mongoUri = process.env.MONGO_URI ?? '';
-	return await mongoose.connect(mongoUri);
+const dbConnection = async () => {
+	try {
+		const mongoUri = process.env.MONGO_URI ?? '';
+		await mongoose.connect(mongoUri);
+		console.log('Database Online! ✅');
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 /**
